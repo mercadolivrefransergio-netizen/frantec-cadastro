@@ -35,71 +35,26 @@ function toggleCadastro(){
 <h1>FRANTEC MÁQUINAS</h1>
 <p class="subtitle">TELA DE CADASTRAMENTO</p>
 
-<form action="https://formsubmit.co/frantecvendas1@gmail.com" method="POST" target="_blank">
-
-<input type="hidden" name="_next" value="https://wa.me/5516991804258?text=Olá,%20acabei%20de%20realizar%20meu%20cadastro%20no%20site%20da%20FRANTEC%20MÁQUINAS.">
+<form action="https://formsubmit.co/frantecvendas1@gmail.com" method="POST">
 
 <input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="Novo Cadastro - FRANTEC MÁQUINAS">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://wa.me/5516991804258?text=Olá,%20acabei%20de%20realizar%20meu%20cadastro%20no%20site%20da%20FRANTEC%20MÁQUINAS.">
 
-<label>Tipo de Cadastro *</label>
-<select id="tipo" name="tipo" onchange="toggleCadastro()" required>
-<option value="">Selecione</option>
-<option value="pj">Pessoa Jurídica - CNPJ</option>
-<option value="pf">Pessoa Física - CPF</option>
-</select>
+<label>Nome *</label>
+<input type="text" name="Nome" required>
 
-<div id="pf" class="hidden">
-<label>Nome Completo *</label>
-<input type="text" name="Nome PF">
-<label>CPF *</label>
-<input type="text" name="CPF">
-<label>Telefone *</label>
-<input type="text" name="Telefone PF">
 <label>Email *</label>
-<input type="email" name="Email PF">
-</div>
+<input type="email" name="Email" required>
 
-<div id="pj" class="hidden">
-<label>CNPJ *</label>
-<input type="text" name="CNPJ">
-<label>Razão Social *</label>
-<input type="text" name="Razão Social">
 <label>Telefone *</label>
-<input type="text" name="Telefone PJ">
-<label>Email *</label>
-<input type="email" name="Email PJ">
-</div>
-
-<label>CEP *</label>
-<input type="text" name="CEP" required>
-<label>Endereço *</label>
-<input type="text" name="Endereço" required>
-<label>Número *</label>
-<input type="text" name="Número" required>
-<label>Bairro *</label>
-<input type="text" name="Bairro" required>
-<label>Cidade *</label>
-<input type="text" name="Cidade" required>
-<label>Estado *</label>
-<input type="text" name="Estado" required>
-
-<div style="margin-top:15px;">
-<label class="inline">
-<input type="checkbox" required>
-Declaro que as informações são verdadeiras.
-</label>
-</div>
-
-<div style="margin-top:10px;">
-<label class="inline">
-<input type="checkbox" required>
-Autorizo o uso dos meus dados para cadastro, faturamento e entrega.
-</label>
-</div>
+<input type="text" name="Telefone" required>
 
 <button type="submit">CONCLUIR CADASTRO</button>
 
 </form>
+
 </div>
 </body>
 </html>
