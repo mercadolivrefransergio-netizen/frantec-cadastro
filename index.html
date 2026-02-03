@@ -6,75 +6,110 @@
 <title>FRANTEC MÁQUINAS - Cadastro</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f4f8fc;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e9f2ff, #f7fbff);
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 650px;
-  background: white;
-  margin: 40px auto;
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  max-width: 680px;
+  background: #ffffff;
+  margin: 60px auto;
+  padding: 45px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(47, 128, 237, 0.12);
+  transition: 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-2px);
 }
 
 h1 {
   text-align: center;
   color: #2F80ED;
-  margin-bottom: 5px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .subtitle {
   text-align: center;
-  color: #666;
-  margin-bottom: 25px;
+  color: #7a8ca5;
+  font-size: 14px;
+  margin-bottom: 35px;
 }
 
 label {
+  font-size: 13px;
   font-weight: 600;
+  color: #344767;
   display: block;
   margin-top: 18px;
 }
 
 input, select {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 6px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: 1px solid #e0e6ed;
   font-size: 14px;
+  background: #f9fbfd;
+  transition: all 0.2s ease;
 }
 
 input:focus, select:focus {
   border-color: #2F80ED;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
   outline: none;
 }
 
 button {
-  margin-top: 30px;
+  margin-top: 35px;
   width: 100%;
-  padding: 14px;
-  background: #2F80ED;
+  padding: 16px;
+  background: linear-gradient(135deg, #2F80ED, #1c5fd1);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background: #1c5fd1;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(47, 128, 237, 0.35);
+}
+
+button:active {
+  transform: scale(0.98);
 }
 
 .hidden {
   display: none;
 }
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 25px;
+  }
+}
 </style>
+
   <script src="https://unpkg.com/imask"></script>
 
 </head>
