@@ -32,14 +32,14 @@ body {
 }
 
 .container {
-  max-width: 680px;
+  max-width: 520px;
   background: #ffffff;
   margin: 60px auto;
-  padding: 45px;
+  padding: 40px;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(47, 128, 237, 0.12);
-  transition: 0.3s ease;
 }
+
 
 .container:hover {
   transform: translateY(-2px);
@@ -70,14 +70,16 @@ label {
 
 input, select {
   width: 100%;
-  padding: 14px;
+  max-width: 480px;
+  padding: 12px;
   margin-top: 6px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #e0e6ed;
   font-size: 14px;
   background: #f9fbfd;
   transition: all 0.2s ease;
 }
+
 
 input:focus, select:focus {
   border-color: #2F80ED;
@@ -135,6 +137,16 @@ input[type="checkbox"] {
 .checkbox-group input {
   width: 18px;
   height: 18px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  width: 100%;
+  max-width: 480px;
 }
 
 </style>
