@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRANTEC MÁQUINAS - Cadastro</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f8fc;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  background: white;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.08);
+}
+
+h1 {
+  text-align: center;
+  color: #2F80ED;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  background: #2F80ED;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1c5fd1;
+}
+</style>
+
+<script>
+function toggleCadastro() {
+  var tipo = document.getElementById("tipo").value;
+  document.getElementById("pj").style.display = tipo === "CNPJ" ? "block" : "none";
+  document.getElementById("pf").style.display = tipo === "CPF" ? "block" : "none";
+}
+</script>
+
+</head>
+<body>
+
+<div class="container">
+<h1>FRANTEC MÁQUINAS</h1>
+<p style="text-align:center;">TELA DE CADASTRAMENTO</p>
+
+<form action="https://api.web3forms.com/submit" method="POST">
+
+<input type="hidden" name="access_key" value="409b30c5-a2df-443f-b888-da2b2a921061">
+<input type="hidden" name="redirect" value="https://wa.me/5516991804258?text=Olá,%20acabei%20de%20realizar%20meu%20cadastro%20na%20FRANTEC%20MÁQUINAS.">
+<input type="hidden" name="subject" value="Novo Cadastro - FRANTEC MÁQUINAS">
+
+<label>Tipo de Cadastro *</label>
+<select name="Tipo de Cadastro" id="tipo" onchange="toggleCadastro()" required>
+  <option value="">Selecione</option>
+  <option value="CNPJ">Pessoa Jurídica - CNPJ</option>
+  <option value="CPF">Pessoa Física - CPF</option>
+</select>
+
+<div id="pj" style="display:none;">
+<label>CNPJ *</label>
+<input type="text" name="CNPJ">
+
+<label>Razão Social *</label>
+<input type="text" name="Razão Social">
+
+<label>Inscrição Estadual</label>
+<input type="text" name="Inscrição Estadual">
+
+<label>Isento?</label>
+<select name="Isento">
+  <option value="Não">Não</option>
+  <option value="Sim">Sim</option>
+</select>
+</div>
+
+<div id="pf" style="display:none;">
+<label>Nome Completo *</label>
+<input type="text" name="Nome Completo">
+
+<label>CPF *</label>
+<input type="text" name="CPF">
+</div>
+
+<label>Telefone *</label>
+<input type="text" name="Telefone" required>
+
+<label>Email *</label>
+<input type="email" name="Email" required>
+
+<label>CEP *</label>
+<input type="text" name="CEP" required>
+
+<label>Endereço Completo *</label>
+<input type="text" name="Endereço" required>
+
+<label>Número *</label>
+<input type="text" name="Número" required>
+
+<label>Bairro *</label>
+<input type="text" name="Bairro" required>
+
+<label>Cidade *</label>
+<input type="text" name="Cidade" required>
+
+<label>Estado *</label>
+<input type="text" name="Estado" required>
+
+<label>
+<input type="checkbox" name="LGPD" required>
+Autorizo o uso dos meus dados para cadastro e faturamento.
+</label>
+
+<button type="submit">CONCLUIR CADASTRO</button>
+
+</form>
+</div>
+
+</body>
+</html>
+
