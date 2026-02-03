@@ -8,6 +8,17 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+  .logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-container img {
+  max-width: 220px;
+  height: auto;
+}
+
+
 body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #e9f2ff, #f7fbff);
@@ -108,6 +119,19 @@ input[type="checkbox"] {
     padding: 25px;
   }
 }
+
+  .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.checkbox-group input {
+  width: 18px;
+  height: 18px;
+}
+
 </style>
 
   <script src="https://unpkg.com/imask"></script>
@@ -117,7 +141,10 @@ input[type="checkbox"] {
 <body>
 
 <div class="container">
-<h1>FRANTEC MÁQUINAS</h1>
+<div class="perfil instagram.png">
+  <img src="perfil instagram.png" alt="FRANTEC MÁQUINAS">
+</div>
+
 <p class="subtitle">TELA DE CADASTRAMENTO</p>
 
 <form action="https://api.web3forms.com/submit" method="POST">
@@ -177,10 +204,13 @@ input[type="checkbox"] {
 <label>Estado *</label>
 <input type="text" id="estado" name="Estado" required>
 
-<label>
-<input type="checkbox" required>
-Autorizo o uso dos meus dados para cadastro e faturamento.
-</label>
+<div class="checkbox-group">
+  <input type="checkbox" id="autorizacao" required>
+  <label for="autorizacao">
+    Autorizo o uso dos meus dados para cadastro e faturamento.
+  </label>
+</div>
+
 
 <button type="submit">CONCLUIR CADASTRO</button>
 </form>
