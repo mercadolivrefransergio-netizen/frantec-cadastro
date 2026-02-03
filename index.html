@@ -5,13 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FRANTEC MÁQUINAS - Cadastro</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/imask"></script>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-
-
-
-
 body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #e9f2ff, #f7fbff);
@@ -23,38 +20,23 @@ body {
   max-width: 600px;
   background: #ffffff;
   margin: 60px auto;
-  padding: 40px;
+  padding: 45px;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(47, 128, 237, 0.12);
-}
-
-
-
-.container:hover {
-  transform: translateY(-2px);
 }
 
 h1 {
   text-align: center;
   color: #2F80ED;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
 .subtitle {
   text-align: center;
   color: #7a8ca5;
   font-size: 14px;
-  margin-bottom: 35px;
-}
-
-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #344767;
-  display: block;
-  margin-top: 18px;
+  margin-bottom: 30px;
 }
 
 form {
@@ -63,83 +45,60 @@ form {
   align-items: center;
 }
 
-label {
+form > * {
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
+}
+
+label {
   margin-top: 18px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #344767;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 6px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 input,
 select {
-  width: 100%;
-  max-width: 500px;
-  padding: 12px;
-  margin-top: 6px;
-  border-radius: 8px;
   border: 1px solid #e0e6ed;
-  font-size: 14px;
   background: #f9fbfd;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
 input:focus,
 select:focus {
   border-color: #2F80ED;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
-  outline: none;
-}
-
-
-input:focus, select:focus {
-  border-color: #2F80ED;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
+  box-shadow: 0 0 0 3px rgba(47,128,237,0.15);
   outline: none;
 }
 
 button {
-  margin-top: 35px;
-  width: 100%;
-  max-width: 500px;
-  padding: 14px;
+  margin-top: 30px;
   background: linear-gradient(135deg, #2F80ED, #1c5fd1);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
-
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(47, 128, 237, 0.35);
+  box-shadow: 0 10px 25px rgba(47,128,237,0.35);
 }
 
-button:active {
-  transform: scale(0.98);
-}
-
-.hidden {
-  display: none;
-}
-
-input[type="checkbox"] {
-  width: auto;
-  margin-right: 8px;
-}
-
-@media (max-width: 600px) {
-  .container {
-    margin: 20px;
-    padding: 25px;
-  }
-}
-
-  .checkbox-group {
+.checkbox-group {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -150,26 +109,17 @@ input[type="checkbox"] {
   width: 18px;
   height: 18px;
 }
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-label {
-  width: 100%;
-  max-width: 480px;
+.hidden {
+  display: none;
 }
-
 </style>
-
-  <script src="https://unpkg.com/imask"></script>
-
 </head>
 
 <body>
 
-
+<div class="container">
+<h1>FRANTEC MÁQUINAS</h1>
 <p class="subtitle">TELA DE CADASTRAMENTO</p>
 
 <form action="https://api.web3forms.com/submit" method="POST">
@@ -180,7 +130,7 @@ label {
 <input type="hidden" name="botcheck" style="display:none;">
 
 <label>Tipo de Cadastro *</label>
-<select id="tipo" name="Tipo de Cadastro" required onchange="toggleCadastro()">
+<select id="tipo" name="Tipo de Cadastro" required>
   <option value="">Selecione</option>
   <option value="CNPJ">Pessoa Jurídica - CNPJ</option>
   <option value="CPF">Pessoa Física - CPF</option>
@@ -192,9 +142,6 @@ label {
 
 <label>Razão Social *</label>
 <input type="text" id="razao" name="Razão Social">
-
-<label>Inscrição Estadual</label>
-<input type="text" name="Inscrição Estadual">
 </div>
 
 <div id="pf" class="hidden">
@@ -212,7 +159,7 @@ label {
 <input type="email" name="Email" required>
 
 <label>CEP *</label>
-<input type="text" id="cep" name="CEP" required onblur="buscarCEP()">
+<input type="text" id="cep" name="CEP" required>
 
 <label>Rua *</label>
 <input type="text" id="rua" name="Rua" required>
@@ -230,73 +177,36 @@ label {
 <input type="text" id="estado" name="Estado" required>
 
 <div class="checkbox-group">
-  <input type="checkbox" id="autorizacao" required>
-  <label for="autorizacao">
-    Autorizo o uso dos meus dados para cadastro e faturamento.
-  </label>
+  <input type="checkbox" id="lgpd" required>
+  <label for="lgpd">Autorizo o uso dos meus dados para cadastro e faturamento.</label>
 </div>
 
-
 <button type="submit">CONCLUIR CADASTRO</button>
+
 </form>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
-  const form = document.querySelector("form");
-  const btn = document.querySelector("button");
+  const tipo = document.getElementById("tipo");
+  const pj = document.getElementById("pj");
+  const pf = document.getElementById("pf");
 
-  form.addEventListener("submit", function() {
-    btn.innerText = "Enviando cadastro...";
-    btn.disabled = true;
+  tipo.addEventListener("change", function() {
+    pj.classList.toggle("hidden", this.value !== "CNPJ");
+    pf.classList.toggle("hidden", this.value !== "CPF");
   });
 
-  function toggleCadastro() {
-    const tipo = document.getElementById("tipo").value;
-    const pj = document.getElementById("pj");
-    const pf = document.getElementById("pf");
+  IMask(document.getElementById('cpf'), { mask: '000.000.000-00' });
+  IMask(document.getElementById('cnpj'), { mask: '00.000.000/0000-00' });
+  IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
+  IMask(document.getElementById('cep'), { mask: '00000-000' });
 
-    pj.classList.toggle("hidden", tipo !== "CNPJ");
-    pf.classList.toggle("hidden", tipo !== "CPF");
-
-    document.getElementById("cnpj").required = (tipo === "CNPJ");
-    document.getElementById("razao").required = (tipo === "CNPJ");
-
-    document.getElementById("nome").required = (tipo === "CPF");
-    document.getElementById("cpf").required = (tipo === "CPF");
-  }
-
-  document.getElementById("tipo").addEventListener("change", toggleCadastro);
-
-// 🔹 Máscaras profissionais
-const cpfMask = IMask(
-  document.getElementById('cpf'),
-  { mask: '000.000.000-00' }
-);
-
-const cnpjMask = IMask(
-  document.getElementById('cnpj'),
-  { mask: '00.000.000/0000-00' }
-);
-
-const telefoneMask = IMask(
-  document.getElementById('telefone'),
-  { mask: '(00) 00000-0000' }
-);
-
-const cepMask = IMask(
-  document.getElementById('cep'),
-  { mask: '00000-000' }
-);
-
-
-  // 🔹 CEP automático
   document.getElementById("cep").addEventListener("blur", function() {
     const cep = this.value.replace(/\D/g,'');
     if (cep.length !== 8) return;
 
-    btn.innerText = "Buscando endereço...";
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then(res => res.json())
       .then(data => {
@@ -306,16 +216,13 @@ const cepMask = IMask(
           document.getElementById("cidade").value = data.localidade || "";
           document.getElementById("estado").value = data.uf || "";
         }
-        btn.innerText = "CONCLUIR CADASTRO";
       });
   });
 
-  // 🔹 CNPJ automático
   document.getElementById("cnpj").addEventListener("blur", function() {
     const cnpj = this.value.replace(/\D/g,'');
     if (cnpj.length !== 14) return;
 
-    btn.innerText = "Buscando dados da empresa...";
     fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`)
       .then(res => res.json())
       .then(data => {
@@ -325,16 +232,12 @@ const cepMask = IMask(
         document.getElementById("bairro").value = data.bairro || "";
         document.getElementById("cidade").value = data.municipio || "";
         document.getElementById("estado").value = data.uf || "";
-        btn.innerText = "CONCLUIR CADASTRO";
       })
-      .catch(() => {
-        btn.innerText = "CONCLUIR CADASTRO";
-      });
+      .catch(() => {});
   });
 
 });
 </script>
-
 
 </body>
 </html>
