@@ -150,54 +150,60 @@ Autorizo o uso dos meus dados para cadastro e faturamento.
 </div>
 
 <script>
-function toggleCadastro() {
-  const tipo = document.getElementById("tipo").value;
-  const pj = document.getElementById("pj");
-  const pf = document.getElementById("pf");
+document.addEventListener("DOMContentLoaded", function() {
 
-  pj.classList.toggle("hidden", tipo !== "CNPJ");
-  pf.classList.toggle("hidden", tipo !== "CPF");
+  function toggleCadastro() {
+    const tipo = document.getElementById("tipo").value;
+    const pj = document.getElementById("pj");
+    const pf = document.getElementById("pf");
 
-  document.getElementById("cnpj").required = (tipo === "CNPJ");
-  document.getElementById("razao").required = (tipo === "CNPJ");
+    pj.classList.toggle("hidden", tipo !== "CNPJ");
+    pf.classList.toggle("hidden", tipo !== "CPF");
 
-  document.getElementById("nome").required = (tipo === "CPF");
-  document.getElementById("cpf").required = (tipo === "CPF");
-}
+    document.getElementById("cnpj").required = (tipo === "CNPJ");
+    document.getElementById("razao").required = (tipo === "CNPJ");
 
-// 🔹 BUSCAR CEP AUTOMATICAMENTE
-document.getElementById("cep").addEventListener("input", function() {
-  const cep = this.value.replace(/\D/g,'');
-  if(cep.length !== 8) return;
+    document.getElementById("nome").required = (tipo === "CPF");
+    document.getElementById("cpf").required = (tipo === "CPF");
+  }
 
-  fetch(`https://viacep.com.br/ws/${cep}/json/`)
-    .then(res => res.json())
-    .then(data => {
-      if(!data.erro) {
-        document.getElementById("rua").value = data.logradouro;
-        document.getElementById("bairro").value = data.bairro;
-        document.getElementById("cidade").value = data.localidade;
-        document.getElementById("estado").value = data.uf;
-      }
-    });
-});
+  document.getElementById("tipo").addEventListener("change", toggleCadastro);
 
-// 🔹 BUSCAR CNPJ AUTOMATICAMENTE
-document.getElementById("cnpj").addEventListener("input", function() {
-  const cnpj = this.value.replace(/\D/g,'');
-  if(cnpj.length !== 14) return;
+  // 🔹 CEP automático
+  document.getElementById("cep").addEventListener("blur", function() {
+    const cep = this.value.replace(/\D/g,'');
+    if (cep.length !== 8) return;
 
-  fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("razao").value = data.razao_social || "";
-      document.getElementById("cep").value = data.cep || "";
-      document.getElementById("rua").value = data.logradouro || "";
-      document.getElementById("bairro").value = data.bairro || "";
-      document.getElementById("cidade").value = data.municipio || "";
-      document.getElementById("estado").value = data.uf || "";
-    })
-    .catch(() => {});
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.erro) {
+          document.getElementById("rua").value = data.logradouro || "";
+          document.getElementById("bairro").value = data.bairro || "";
+          document.getElementById("cidade").value = data.localidade || "";
+          document.getElementById("estado").value = data.uf || "";
+        }
+      });
+  });
+
+  // 🔹 CNPJ automático
+  document.getElementById("cnpj").addEventListener("blur", function() {
+    const cnpj = this.value.replace(/\D/g,'');
+    if (cnpj.length !== 14) return;
+
+    fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("razao").value = data.razao_social || "";
+        document.getElementById("cep").value = data.cep || "";
+        document.getElementById("rua").value = data.logradouro || "";
+        document.getElementById("bairro").value = data.bairro || "";
+        document.getElementById("cidade").value = data.municipio || "";
+        document.getElementById("estado").value = data.uf || "";
+      })
+      .catch(() => {});
+  });
+
 });
 </script>
 
