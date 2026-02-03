@@ -152,6 +152,14 @@ Autorizo o uso dos meus dados para cadastro e faturamento.
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
+  const form = document.querySelector("form");
+  const btn = document.querySelector("button");
+
+  form.addEventListener("submit", function() {
+    btn.innerText = "Enviando cadastro...";
+    btn.disabled = true;
+  });
+
   function toggleCadastro() {
     const tipo = document.getElementById("tipo").value;
     const pj = document.getElementById("pj");
@@ -169,11 +177,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
   document.getElementById("tipo").addEventListener("change", toggleCadastro);
 
+  // 🔹 Máscara CPF
+  document.getElementById("cpf")?.addEventListener("input", function() {
+    this.value = this.value
+      .replace(/\D/g,'')
+      .replace(/(\d{3})(\d)/,"$1.$2")
+      .replace(/(\d{3})(\d)/,"$1.$2")
+      .replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+      .slice(0,14);
+  });
+
+  // 🔹 Máscara CNPJ
+  document.getElementById("cnpj")?.addEventListener("input", function() {
+    this.value = this.value
+      .replace(/\D/g,'')
+      .replace(/^(\d{2})(\d)/,"$1.$2")
+      .replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+      .replace(/\.(\d{3})(\d)/,".$1/$2")
+      .replace(/(\d{4})(\d)/,"$1-$2")
+      .slice(0,18);
+  });
+
+  // 🔹 Máscara Telefone
+  document.getElementById("telefone")?.addEventListener("input", function() {
+    this.value = this.value
+      .replace(/\D/g,'')
+      .replace(/^(\d{2})(\d)/g,"($1) $2")
+      .replace(/(\d{5})(\d)/,"$1-$2")
+      .slice(0,15);
+  });
+
+  // 🔹 Máscara CEP
+  document.getElementById("cep")?.addEventListener("input", function() {
+    this.value = this.value
+      .replace(/\D/g,'')
+      .replace(/(\d{5})(\d)/,"$1-$2")
+      .slice(0,9);
+  });
+
   // 🔹 CEP automático
   document.getElementById("cep").addEventListener("blur", function() {
     const cep = this.value.replace(/\D/g,'');
     if (cep.length !== 8) return;
 
+    btn.innerText = "Buscando endereço...";
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then(res => res.json())
       .then(data => {
@@ -183,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
           document.getElementById("cidade").value = data.localidade || "";
           document.getElementById("estado").value = data.uf || "";
         }
+        btn.innerText = "CONCLUIR CADASTRO";
       });
   });
 
@@ -191,6 +239,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const cnpj = this.value.replace(/\D/g,'');
     if (cnpj.length !== 14) return;
 
+    btn.innerText = "Buscando dados da empresa...";
     fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`)
       .then(res => res.json())
       .then(data => {
@@ -200,8 +249,11 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("bairro").value = data.bairro || "";
         document.getElementById("cidade").value = data.municipio || "";
         document.getElementById("estado").value = data.uf || "";
+        btn.innerText = "CONCLUIR CADASTRO";
       })
-      .catch(() => {});
+      .catch(() => {
+        btn.innerText = "CONCLUIR CADASTRO";
+      });
   });
 
 });
